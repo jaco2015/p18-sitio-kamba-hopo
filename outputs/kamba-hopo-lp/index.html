@@ -3,8 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kamba Hopo — Bar, Cafe & Bistro | Vallemi, Paraguay</title>
-  <meta name="description" content="Bar, Cafe & Bistro en Vallemi, Paraguay. Donde se cruzan sabores y emociones. Comida con alma, cafe con estilo, karaoke y turismo en cavernas.">
+  <title>Kamba Hopo — Bar, Café & Bistro | Vallemi, Paraguay</title>
+  <meta name="description" content="Bar, Café & Bistro en Vallemi, Paraguay. Donde se cruzan sabores y emociones. Comida con alma, café con estilo, karaoke y turismo en cavernas.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#040A07">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://p18-sitio-kamba-hopo.vercel.app/">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kamba Hopo — Bar, Café & Bistro | Vallemi, Paraguay">
+  <meta property="og:description" content="Donde se cruzan sabores y emociones. Gastronomía, café, karaoke y turismo en cavernas.">
+  <meta property="og:image" content="https://p18-sitio-kamba-hopo.vercel.app/og-image.png">
+  <meta property="og:url" content="https://p18-sitio-kamba-hopo.vercel.app/">
+  <meta property="og:locale" content="es_PY">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kamba Hopo — Bar, Café & Bistro">
+  <meta name="twitter:description" content="Donde se cruzan sabores y emociones. Vallemi, Paraguay.">
+  <meta name="twitter:image" content="https://p18-sitio-kamba-hopo.vercel.app/og-image.png">
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Kamba Hopo",
+    "description": "Bar, Café & Bistro en Vallemi, Paraguay",
+    "url": "https://p18-sitio-kamba-hopo.vercel.app",
+    "telephone": "+595987463353",
+    "servesCuisine": ["Paraguaya", "Bistro", "Café"],
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Vallemi",
+      "addressCountry": "PY"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristAttraction",
+    "name": "Caverna Kamba Hopo",
+    "description": "Formación geológica histórica vinculada a la historia afro-paraguaya. Tours guiados disponibles, a 3.5km del puerto de Vallemi.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Vallemi",
+      "addressCountry": "PY"
+    }
+  }
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -194,6 +243,41 @@
     }
     .nav-links a:hover { color: var(--text-0); }
     .nav-links a:hover::after { width: 100%; }
+
+    /* ═══ HAMBURGER ═══ */
+    .nav-hamburger {
+      display: none;
+      background: none; border: none; padding: 8px;
+      flex-direction: column; gap: 5px;
+      z-index: 102;
+    }
+    .nav-hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--cream); border-radius: 1px;
+      transition: transform 0.4s var(--ease), opacity 0.4s var(--ease);
+    }
+    .nav-hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile-menu {
+      position: fixed; inset: 0; z-index: 101;
+      background: rgba(4, 10, 7, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 32px;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.4s var(--ease), visibility 0.4s;
+    }
+    .nav-mobile-menu.active { opacity: 1; visibility: visible; }
+    .nav-mobile-menu a {
+      font-family: var(--heading-font);
+      font-size: 1.8rem; font-weight: 600;
+      color: var(--text-0); text-decoration: none;
+      letter-spacing: -0.02em;
+      transition: color 0.3s var(--ease);
+    }
+    .nav-mobile-menu a:hover { color: var(--accent-light); }
 
     /* ═══ HERO ═══ */
     .hero {
@@ -535,6 +619,7 @@
       .section { padding: 100px 0; }
       .hero { padding: 120px 0 80px; }
       .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
       .proof-sep { display: none; }
       .footer .container { flex-direction: column; gap: 16px; text-align: center; }
       .hero-actions { flex-direction: column; align-items: center; }
@@ -568,7 +653,7 @@
         <div class="logo-circle">KH</div>
         <div>
           <div class="brand-text">Kamba Hopo<span>.</span></div>
-          <div class="nav-sub">Bar &middot; Cafe &middot; Bistro</div>
+          <div class="nav-sub">Bar &middot; Café &middot; Bistro</div>
         </div>
       </a>
       <ul class="nav-links">
@@ -577,19 +662,30 @@
         <li><a href="#turismo">Turismo</a></li>
         <li><a href="#cta">Reservar</a></li>
       </ul>
+      <button class="nav-hamburger" id="navHamburger"
+              aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-mobile-menu" id="navMobileMenu"
+           role="dialog" aria-label="Menú de navegación">
+        <a href="#experiencias">Experiencias</a>
+        <a href="#carta">Carta</a>
+        <a href="#turismo">Turismo</a>
+        <a href="#cta">Reservar</a>
+      </div>
     </nav>
 
     <!-- ═══ HERO ═══ -->
     <section class="hero">
       <div class="hero-horizon"></div>
       <div class="container">
-        <div class="hero-label" id="heroLabel">Bar &middot; Cafe &middot; Bistro &middot; Karaoke &middot; Turismo</div>
+        <div class="hero-label" id="heroLabel">Bar &middot; Café &middot; Bistro &middot; Karaoke &middot; Turismo</div>
         <h1 class="hero-name" id="heroName">
           <span class="first-line" data-split>Kamba</span>
           <span class="last" data-split>Hopo</span>
         </h1>
         <p class="hero-tagline" id="heroTagline">"Donde se cruzan sabores y emociones"</p>
-        <p class="hero-desc" id="heroDesc">Comida con alma y cafe con estilo en el corazon de Vallemi, Paraguay. Gastronomia, karaoke y aventura en cavernas, todo en un solo lugar.</p>
+        <p class="hero-desc" id="heroDesc">Comida con alma y café con estilo en el corazón de Vallemi, Paraguay. Gastronomía, karaoke y aventura en cavernas, todo en un solo lugar.</p>
         <div class="hero-actions" id="heroActions">
           <a href="https://wa.me/595987463353" class="btn btn-primary magnetic" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
@@ -614,7 +710,7 @@
           <div class="proof-value">
             <span class="counter-num" data-target="4">0</span>
           </div>
-          <div class="proof-label">Experiencias Unicas</div>
+          <div class="proof-label">Experiencias Únicas</div>
         </div>
         <div class="proof-sep"></div>
         <div class="proof-stat reveal reveal-d2">
@@ -635,27 +731,27 @@
     <section class="section" id="experiencias">
       <div class="container">
         <div class="section-eyebrow reveal"><span class="num">01</span> Experiencias</div>
-        <h2 class="section-title reveal">Lo que nos hace <em>unicos</em></h2>
+        <h2 class="section-title reveal">Lo que nos hace <em>únicos</em></h2>
 
         <div class="bento">
           <div class="bento-card bento-featured reveal">
             <div>
               <div class="bento-accent"></div>
               <h3 class="bento-title">Restaurante & Bistro</h3>
-              <p class="bento-desc">Comida con alma. Platos que honran la tradicion paraguaya con ingredientes locales y presentacion cuidada. Cada bocado cuenta una historia de Vallemi.</p>
+              <p class="bento-desc">Comida con alma. Platos que honran la tradición paraguaya con ingredientes locales y presentación cuidada. Cada bocado cuenta una historia de Vallemi.</p>
             </div>
             <div class="bento-tags">
               <span class="bento-tag">Almuerzo</span>
               <span class="bento-tag">Cena</span>
-              <span class="bento-tag">Menu del dia</span>
-              <span class="bento-tag">Comida tipica</span>
+              <span class="bento-tag">Menú del día</span>
+              <span class="bento-tag">Comida típica</span>
             </div>
           </div>
           <div class="bento-card reveal reveal-d1">
             <div>
               <div class="bento-accent"></div>
-              <h3 class="bento-title">Cafe con Estilo</h3>
-              <p class="bento-desc">Alianza con @marleycoffee.paraguay. Cafe de especialidad servido en un ambiente que invita a quedarse.</p>
+              <h3 class="bento-title">Café con Estilo</h3>
+              <p class="bento-desc">Alianza con @marleycoffee.paraguay. Café de especialidad servido en un ambiente que invita a quedarse.</p>
             </div>
             <div class="bento-tags">
               <span class="bento-tag">Marley Coffee</span>
@@ -666,7 +762,7 @@
             <div>
               <div class="bento-accent"></div>
               <h3 class="bento-title">Karaoke</h3>
-              <p class="bento-desc">Noches donde las emociones se cruzan con la musica. El escenario es tuyo.</p>
+              <p class="bento-desc">Noches donde las emociones se cruzan con la música. El escenario es tuyo.</p>
             </div>
             <div class="bento-tags">
               <span class="bento-tag">Noches</span>
@@ -701,34 +797,34 @@
             <div>
               <div class="bento-accent"></div>
               <h3 class="bento-title">Platos Principales</h3>
-              <p class="bento-desc">Recetas tradicionales paraguayas preparadas con ingredientes frescos de la region. Desde chipa guazu hasta asado a la estaca, cada plato es una celebracion.</p>
+              <p class="bento-desc">Recetas tradicionales paraguayas preparadas con ingredientes frescos de la región. Desde chipa guazú hasta asado a la estaca, cada plato es una celebración.</p>
             </div>
             <div class="bento-tags">
               <span class="bento-tag">Parrilla</span>
-              <span class="bento-tag">Tipicos</span>
+              <span class="bento-tag">Típicos</span>
               <span class="bento-tag">Del dia</span>
             </div>
           </div>
           <div class="bento-card reveal reveal-d1">
             <div>
               <div class="bento-accent"></div>
-              <h3 class="bento-title">Cafeteria</h3>
-              <p class="bento-desc">Marley Coffee Paraguay. Espresso, cappuccino, cold brew y mas. Acompanado de reposteria artesanal.</p>
+              <h3 class="bento-title">Cafetería</h3>
+              <p class="bento-desc">Marley Coffee Paraguay. Espresso, cappuccino, cold brew y más. Acompañado de repostería artesanal.</p>
             </div>
             <div class="bento-tags">
               <span class="bento-tag">Marley Coffee</span>
-              <span class="bento-tag">Reposteria</span>
+              <span class="bento-tag">Repostería</span>
             </div>
           </div>
           <div class="bento-card reveal reveal-d2">
             <div>
               <div class="bento-accent"></div>
               <h3 class="bento-title">Bebidas</h3>
-              <p class="bento-desc">Cocteles de autor, cervezas artesanales, jugos naturales y la clasica terere bien fria.</p>
+              <p class="bento-desc">Cócteles de autor, cervezas artesanales, jugos naturales y la clásica tereré bien fría.</p>
             </div>
             <div class="bento-tags">
-              <span class="bento-tag">Cocteles</span>
-              <span class="bento-tag">Terere</span>
+              <span class="bento-tag">Cócteles</span>
+              <span class="bento-tag">Tereré</span>
             </div>
           </div>
         </div>
@@ -748,13 +844,13 @@
             <div class="stack-dot"></div>
             <div>
               <div class="stack-name">Caverna Kamba Hopo</div>
-              <div class="stack-detail">Formacion geologica historica a 3.5 km del puerto. Tours guiados.</div>
+              <div class="stack-detail">Formación geológica histórica a 3.5 km del puerto. Tours guiados.</div>
             </div>
           </div>
           <div class="stack-item reveal reveal-d1">
             <div class="stack-dot"></div>
             <div>
-              <div class="stack-name">Rio Paraguay</div>
+              <div class="stack-name">Río Paraguay</div>
               <div class="stack-detail">Paseos en lancha con vistas imponentes de los acantilados.</div>
             </div>
           </div>
@@ -762,13 +858,13 @@
             <div class="stack-dot"></div>
             <div>
               <div class="stack-name">Cerro Vallemi</div>
-              <div class="stack-detail">Trekking y miradores naturales sobre el rio.</div>
+              <div class="stack-detail">Trekking y miradores naturales sobre el río.</div>
             </div>
           </div>
           <div class="stack-item reveal reveal-d3">
             <div class="stack-dot"></div>
             <div>
-              <div class="stack-name">Turismo Historico</div>
+              <div class="stack-name">Turismo Histórico</div>
               <div class="stack-detail">La memoria de Kamba Hopo y la historia afro-paraguaya.</div>
             </div>
           </div>
@@ -793,7 +889,7 @@
     <!-- ═══ FOOTER ═══ -->
     <footer class="footer">
       <div class="container">
-        <div class="footer-left">&copy; 2026 Kamba Hopo — Bar, Cafe & Bistro. Vallemi, Paraguay.</div>
+        <div class="footer-left">&copy; 2026 Kamba Hopo — Bar, Café & Bistro. Vallemi, Paraguay.</div>
         <ul class="footer-links">
           <li><a href="https://www.instagram.com/kambahopo" target="_blank" rel="noopener">Instagram</a></li>
           <li><a href="https://wa.me/595987463353" target="_blank" rel="noopener">WhatsApp</a></li>
@@ -915,6 +1011,46 @@
         const x = (e.clientX / window.innerWidth) * 10;
         const y = (e.clientY / window.innerHeight) * 10;
         mesh.style.transform = `translate(${x - 5}px, ${y - 5}px)`;
+      });
+    })();
+    // ═══ 8. HAMBURGER MENU ═══
+    (() => {
+      const btn = document.getElementById('navHamburger');
+      const menu = document.getElementById('navMobileMenu');
+      if (!btn || !menu) return;
+
+      const toggle = (open) => {
+        const isOpen = typeof open === 'boolean' ? open : !btn.classList.contains('active');
+        btn.classList.toggle('active', isOpen);
+        menu.classList.toggle('active', isOpen);
+        btn.setAttribute('aria-expanded', isOpen);
+        btn.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      };
+
+      btn.addEventListener('click', () => toggle());
+
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => toggle(false));
+      });
+
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && menu.classList.contains('active')) toggle(false);
+      });
+
+      menu.addEventListener('click', e => {
+        if (e.target === menu) toggle(false);
+      });
+    })();
+
+    // ═══ 9. ANALYTICS ═══
+    (() => {
+      const waLinks = document.querySelectorAll('a[href*="wa.me"]');
+      if (!waLinks.length) return;
+      waLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.va) window.va('event', { name: 'whatsapp_click' });
+        });
       });
     })();
   </script>

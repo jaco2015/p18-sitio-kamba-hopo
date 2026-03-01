@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://p18-sitio-kamba-hopo.vercel.app/sitemap.xml
